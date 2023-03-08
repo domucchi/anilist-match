@@ -13,8 +13,14 @@ export default function Home() {
 			<main className='px-8 py-4'>
 				<Match />
 			</main>
-			<footer className='bottom-0 fixed px-8 py-4 bg-[rgb(21,31,46)] w-full'>
-				Hi im dom
+			<footer className='bottom-0 fixed px-8 py-2 bg-[rgb(21,31,46)] w-full text-xs flex justify-center'>
+				<a
+					href='https://github.com/domucchi/anilist-watch'
+					target='_blank'
+					className='hover:text-blue-400'
+				>
+					Link to GitHub repository
+				</a>
 			</footer>
 		</>
 	);

@@ -15,6 +15,7 @@ export const MatchingAnimeList = ({ user1, user2 }: Props) => {
 	useEffect(() => {
 		const fetchAnimeList = async () => {
 			try {
+				setLoading(true);
 				const res = await fetch(`/api/matchingAnime/${user1}/${user2}/`);
 				const data = await res.json();
 				setAnimeList(data.animeList);
@@ -28,13 +29,25 @@ export const MatchingAnimeList = ({ user1, user2 }: Props) => {
 		fetchAnimeList();
 	}, [user1, user2]);
 
-	if (error) return <div>ERROR</div>;
-	if (!animeList && loading) return <div>LOADING</div>;
+	if (error) return <div>ERROR SRY</div>;
+	if (loading)
+		return (
+			<div className='flex items-center justify-center py-16'>
+				<div
+					className='inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]'
+					role='status'
+				>
+					<span className='!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]'>
+						Loading...
+					</span>
+				</div>
+			</div>
+		);
 
 	return (
-		<div>
+		<div className='py-4'>
 			<p className='text-center py-4'>Found {count} matches!</p>
-			<div className='grid grid-cols-3 px-4'>
+			<div className='grid grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 px-4'>
 				{animeList.map((anime: AnimeListEntries) => (
 					<div key={anime.media.id} className='p-4'>
 						<a
