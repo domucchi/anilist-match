@@ -22,7 +22,7 @@ export const FormComponent = ({ formSubmit }: Props) => {
 			onSubmit={values => formSubmit(values.user1, values.user2)}
 		>
 			<div className='flex justify-center align-center'>
-				<Form className='flex align-center flex-col w-1/3 gap-4 text-red-400'>
+				<Form className='flex align-center flex-col w-full px-[12.5%] lg:w-1/3 lg:px-0 gap-4 text-red-400'>
 					<Field
 						name='user1'
 						type='text'
